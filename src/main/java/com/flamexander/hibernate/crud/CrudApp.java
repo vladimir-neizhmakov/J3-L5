@@ -26,13 +26,13 @@ public class CrudApp {
         try (Session session = factory.getCurrentSession()) {
             session.beginTransaction();
 
-            List<SimpleItem> items = session.createQuery("from SimpleItem").getResultList();
+            List<SimpleItem> items = session.createQuery("from Product").getResultList();
             System.out.println(items + "\n");
 
-            SimpleItem si1 = session.createQuery("select s from SimpleItem s where s.id = 3", SimpleItem.class).getSingleResult();
+            SimpleItem si1 = session.createQuery("select s from Product s where s.id = 3", SimpleItem.class).getSingleResult();
             System.out.println(si1 + "\n");
 
-            List<SimpleItem> cheapItems = session.createQuery("select s from SimpleItem s where s.price < 80").getResultList();
+            List<SimpleItem> cheapItems = session.createQuery("select s from Product s where s.price < 80").getResultList();
             System.out.println(cheapItems + "\n");
 
             session.getTransaction().commit();
